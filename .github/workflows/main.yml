@@ -28,7 +28,7 @@ jobs:
       
       - name: Run a multi-line script
         run: |
-          echo ${{GITHUB_SHA}}
+          echo ${GITHUB_SHA}
       
       - name: Docker Login
         uses: docker/login-action@v1.10.0
@@ -42,7 +42,7 @@ jobs:
         with:
           push: true
           context: ./model/
-          tags: hirzeman/model:${{GITHUB_SHA}}
+          tags: hirzeman/model:1
 
       - name: execute py script # run the run.py to get the latest data
         run: |
