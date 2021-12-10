@@ -38,7 +38,7 @@ jobs:
         with:
           push: true
           context: ./model/
-          tags: hirzeman/model:${{GITHUB_SHA}}
+          tags: hirzeman/model:{{GITHUB_SHA}}
 
       - name: execute py script # run the run.py to get the latest data
         run: |
