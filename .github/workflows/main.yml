@@ -26,6 +26,10 @@ jobs:
         with:
           python-version: 3.8 #install the python needed
       
+      - name: Run a multi-line script
+        run: |
+          echo ${{GITHUB_SHA}}
+      
       - name: Docker Login
         uses: docker/login-action@v1.10.0
         with:
@@ -45,8 +49,4 @@ jobs:
           python run.py
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
           
