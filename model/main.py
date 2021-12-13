@@ -9,30 +9,30 @@ import random
 # A deployment.yaml in the search folder is generated to trigger ArgoCD which pulls it
 # MOdel gets deployed and works of queue => submits to performnnce topic
 
-COMMIT = os.getenv('tag')
+UUID = os.getenv('UUID')
 
 def on_state(channel, method_frame, header_frame, body):
     print(method_frame.delivery_tag)
     print(f'Running Model with {body} parameters')
     channel.basic_ack(delivery_tag=method_frame.delivery_tag)
-    channel.basic_publish(exchange='',routing_key='performance', body= str(random.randint(0,100)))
+    channel.basic_publish(exchange='',routing_key='performance', body= json.dumps({UUUID:"very good"}))
     print('published performance')
 
 def main():
-    print(os.getenv('MODE'))
-    if os.getenv('MODE') == 'search':
-        print("start")
-        connection = pika.BlockingConnection(pika.ConnectionParameters("pipr.io",port = 5672))
-        channel = connection.channel()
-        channel.queue_declare('performance',durable = True)
-        channel.basic_consume('statespace', on_state)
-        channel.start_consuming()
 
-    elif os.getenv('MODE') == 'serve':
-        print('Serving Model')
+    # if os.getenv('MODE') == 'search':
+    print("start")
+    connection = pika.BlockingConnection(pika.ConnectionParameters("pipr.io",port = 5672))
+    channel = connection.channel()
+    channel.queue_declare('performance',durable = True)
+    channel.basic_consume(UUID, on_state)
+    channel.start_consuming()
 
-    else:
-        raise Exception('error')
+    # elif os.getenv('MODE') == 'serve':
+    #     print('Serving Model')
+
+    # else:
+    #     raise Exception('error')
 
     pass
     

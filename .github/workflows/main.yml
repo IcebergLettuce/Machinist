@@ -40,7 +40,7 @@ jobs:
 
       - name: execute docker # run the run.py to get the latest data
         run: |
-          docker build model/ -t hirzeman/model:${{env.uuid}}
+          docker build model/ --build-arg UUID=${{env.uuid}} -t hirzeman/model:${{env.uuid}}
           docker push hirzeman/model:${{env.uuid}}
 
       - name: execute py script # run the run.py to get the latest data
