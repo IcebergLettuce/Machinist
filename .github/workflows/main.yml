@@ -47,6 +47,7 @@ jobs:
         run: |
           python -m pip install pika
           python submit.py ${{env.uuid}}
+          touch test
 
       - name: ops
         uses: EndBug/add-and-commit@v7 # You can change this to use a specific version.
