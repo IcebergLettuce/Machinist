@@ -69,7 +69,7 @@ jobs:
 
           # How the action should behave when the targeted branch is missing: "create" will create a new one on the remote, "throw" will exit
           # Default: throw
-          branch_mode: throw
+          branch_mode: create
 
           # The name of the custom committer you want to use, if different from the author of the commit.
           # Default: the name of the author (set with either author_name or default_author)
@@ -103,7 +103,7 @@ jobs:
 
           # Arguments for the git pull command. Use NO-PULL to avoid the action pulling at all.
           # Default: '--no-rebase'
-          pull: '--rebase'
+          pull: '--rebase --autostash'
 
           # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
           # Default: true
