@@ -69,7 +69,7 @@ jobs:
 
           # How the action should behave when the targeted branch is missing: "create" will create a new one on the remote, "throw" will exit
           # Default: throw
-          branch_mode: create
+          branch_mode: throw
 
           # The name of the custom committer you want to use, if different from the author of the commit.
           # Default: the name of the author (set with either author_name or default_author)
