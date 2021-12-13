@@ -15,7 +15,7 @@ def on_state(channel, method_frame, header_frame, body):
     print(method_frame.delivery_tag)
     print(f'Running Model with {body} parameters')
     channel.basic_ack(delivery_tag=method_frame.delivery_tag)
-    channel.basic_publish(exchange='',routing_key='performance', body= json.dumps({UUUID:"very good"}))
+    channel.basic_publish(exchange='',routing_key='performance', body= json.dumps({UUID:"very good"}))
     print('published performance')
 
 def main():
