@@ -11,6 +11,7 @@ import time
 
 UUID = os.getenv('UUID')
 
+print(UUID)
 def on_state(channel, method_frame, header_frame, body):
     print(method_frame.delivery_tag)
     print(f'Running Model with {body} parameters')
