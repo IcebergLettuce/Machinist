@@ -37,14 +37,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-  
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          context: ./model/
-          tags: hirzeman/model:${{env.hallo}}
+
+      - name: execute docker # run the run.py to get the latest data
+        run: |
+          docker build model/ -t hirzeman/model:${{env.hallo}}
+          docker push hirzeman/model:${{env.hallo}}
 
       - name: execute py script # run the run.py to get the latest data
         run: |
