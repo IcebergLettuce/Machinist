@@ -18,6 +18,19 @@ for i, state in enumerate(states):
     channel.basic_publish(exchange='',routing_key=uuid, body=json.dumps(state))
     print(f'published state {i}')
 
-
 print("Sent States")
 connection.close()
+
+pod = f'''
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mlopsi
+spec:
+  containers:
+  - name: mlopsi
+    image: hirzeman/model:{uuid}
+'''
+
+with open('search/deployment.yaml', 'w') as f:
+    f.write(pod)
