@@ -1,8 +1,9 @@
+
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: mlopsi
 spec:
   containers:
-  - name: nginx
-    image: hirzeman/model:${{env.uuid}}
+  - name: mlopsi
+    image: hirzeman/model:b2539d3808efe085ec230d31a1b681c2823a68b6
