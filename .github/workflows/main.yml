@@ -40,14 +40,13 @@ jobs:
 
       - name: execute docker # run the run.py to get the latest data
         run: |
-          docker build model/ --build-arg UUID=${{env.uuid}} -t hirzeman/model:${{env.uuid}}
+          docker build model/ --build-arg VAR_A=${{env.uuid}} -t hirzeman/model:${{env.uuid}}
           docker push hirzeman/model:${{env.uuid}}
 
       - name: execute py script # run the run.py to get the latest data
         run: |
           python -m pip install pika
           python submit.py ${{env.uuid}}
-          touch testo
 
       - name: ops
         uses: EndBug/add-and-commit@v7 # You can change this to use a specific version.
@@ -104,7 +103,7 @@ jobs:
 
           # Arguments for the git pull command. Use NO-PULL to avoid the action pulling at all.
           # Default: '--no-rebase'
-          # pull: 'NO-PULL or --rebase --autostash ...'
+          pull: 'origin observer --rebase --autostash -X theirs'
 
           # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
           # Default: true
