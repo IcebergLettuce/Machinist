@@ -35,6 +35,7 @@ def main():
     channel.queue_declare('performance',durable = True)
     channel.basic_consume(UUID, on_state)
     channel.start_consuming()
+    print('dont know why here')
     
 if __name__ == '__main__':
     main()
