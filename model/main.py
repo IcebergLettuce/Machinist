@@ -14,6 +14,7 @@ UUID = os.getenv('UUID')
 
 
 
+
 print(UUID)
 def on_state(channel, method_frame, header_frame, body):
     print(method_frame.delivery_tag)
@@ -35,6 +36,7 @@ def main():
     channel.queue_declare('performance',durable = True)
     channel.basic_consume(UUID, on_state)
     channel.start_consuming()
+    print('dont know why here')
     
 if __name__ == '__main__':
     main()
