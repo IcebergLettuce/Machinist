@@ -3,6 +3,7 @@ import os
 import pika
 import random
 import time
+import json
 # Branch off and create search branch
 # Pipeline build cntainer and submits statespace to the queue with the git commit tag (version)
 # Each statespace configuration has its own sub-ID on the queue
