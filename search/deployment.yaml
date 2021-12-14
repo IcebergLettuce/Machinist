@@ -6,4 +6,4 @@ metadata:
 spec:
   containers:
   - name: mlopsi
-    image: hirzeman/model:b2539d3808efe085ec230d31a1b681c2823a68b6
+    image: hirzeman/model:2c660432028705e695f759a5723b68a862b4c19b
