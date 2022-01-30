@@ -1,0 +1,15 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5673"
+    volumes:
+      - "rabbit"
+volumes:
+  rabbit:
+    driver: local
